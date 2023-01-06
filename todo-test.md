@@ -14,3 +14,7 @@
 ### 嵌套路由的demo
 - jspang 子路由
 ### 增量添加typescript
+### Es module更复杂的使用方式和原理
+- [arco-design-vue 的模块化](https://github.com/arco-design/arco-design-vue/blob/main/packages/web-vue/components/index.ts)
+- [模块化开发-ES Modules 导入用法 - 秒速了一些可能的问题，包含了default as 别名](https://juejin.cn/post/6931707743174983687)
+- [ES6 Module export与import复合使用](https://www.cnblogs.com/whnba/p/10498875.html)
