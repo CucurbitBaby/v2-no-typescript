@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
+// alert(2) // 测试模块加载顺序
+
 Vue.use(VueRouter)
 
 const routes = [
