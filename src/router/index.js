@@ -1,25 +1,25 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-
-// alert(2) // 测试模块加载顺序
+import Layout from '@/layout'
+import testAxiosRouter from './test-axios'
 
 Vue.use(VueRouter)
 
 const routes = [
+
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    component: Layout,
+    children: [{
+      path: '',
+      name: 'Home',
+      component: HomeView
+    }]
   },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+
+  testAxiosRouter
+
 ]
 
 const router = new VueRouter({

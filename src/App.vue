@@ -1,21 +1,12 @@
 <template>
   <div id="app" class="app">
-    <div class="app__left">
-      <LeftNav />
-    </div>
-    <div class="app__right">
-      <router-view/>
-    </div>
+    <router-view />
   </div>
 </template>
 <script>
 
-import LeftNav from '@/layout/left-nav'
-
 export default {
-  components: {
-    LeftNav
-  }
+
 }
 </script>
 <style lang="scss">
@@ -25,7 +16,7 @@ html, body {
 }
 </style>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .app {
   height: 100%;
   display: flex;
