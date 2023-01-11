@@ -158,6 +158,12 @@ const tableData = [
     age: 18,
     income: 5800,
     expend: 10000
+  },
+  {
+    name: '小花',
+    age: 19,
+    income: 10800,
+    expend: 10000
   }
 ]
 
@@ -198,7 +204,12 @@ export default {
      */
     handleClickLeftEdit(index, row) {
       this.row_copy = cloneDeep(row)
+
+      this.tableData.forEach((row) => {
+        row.edit = false
+      })
       row.edit = true
+
       this.currentEditIndex = index
     },
 
@@ -244,7 +255,8 @@ export default {
       }
 
       this.row_copy = cloneDeep(row)
-
+      this.dialogName = '编辑行'
+      this.dialogState = '编辑'
       this.dialogFormVisible = true
     },
 
