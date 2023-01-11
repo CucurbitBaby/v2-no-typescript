@@ -202,7 +202,7 @@ const fixed2Number = (x) => {
     return s
   } else {
     const [v] = s.match(/^\d+(?:\.\d{0,2})?/)
-    return v
+    return v || x
   }
 }
 
