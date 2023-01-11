@@ -6,6 +6,9 @@
         <el-button type="primary" size="small" @click="handleClickAdd">
           普通新增
         </el-button>
+        <el-button type="info" plain size="small" @click="handleClickReset">
+          重置表格
+        </el-button>
       </dd>
     </dl>
     <el-table :data="tableData" border style="width: 100%">
@@ -54,7 +57,6 @@
             </div>
           </template>
           <span v-else>{{ row.name }}</span>
-          {{ row.edit }}
         </template>
       </el-table-column>
       <el-table-column prop="age" label="年龄">
@@ -99,7 +101,7 @@
           <span v-else>{{ row.expend }}</span>
         </template>
       </el-table-column>
-      <el-table-column fixed="right" label="操作">
+      <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
             >编辑</el-button
@@ -110,6 +112,13 @@
             @click="handleDelete(scope.$index, scope.row)"
             >删除</el-button
           >
+        </template>
+      </el-table-column>
+
+      <el-table-column label="计算结果">
+        <template slot-scope="{ $index }">
+          <!-- <span v-if="$index === 0">{{ calc_result }}</span> -->
+          <span v-if="$index === 0">{{ calcResFixed }}</span>
         </template>
       </el-table-column>
     </el-table>
@@ -138,34 +147,64 @@
 </template>
 
 <script>
-import { cloneDeep } from 'lodash'
+import { cloneDeep, mean } from 'lodash'
+import NP from 'number-precision'
 
 const tableData = [
   {
     name: '小明',
-    age: 18,
-    income: 1800,
-    expend: 2000
+    age: 1,
+    income: 1,
+    expend: 1
   },
   {
     name: '小红',
-    age: 28,
-    income: 2800,
-    expend: 3000
+    age: 2,
+    income: 2,
+    expend: 2
   },
   {
     name: '小雷',
-    age: 18,
-    income: 5800,
-    expend: 10000
+    age: 3,
+    income: 3,
+    expend: 3
   },
   {
     name: '小花',
-    age: 19,
-    income: 10800,
-    expend: 10000
+    age: 4,
+    income: 4,
+    expend: 4
+  },
+  {
+    name: '包子',
+    age: 5,
+    income: 5,
+    expend: 5
   }
 ]
+
+/**
+ * @description 左侧操作，点击编辑 √
+ * @return void
+ */
+const fixed2Number = (x) => {
+  let s = x.toString() // 把一个逻辑值转换为字符串，并返回结果；
+  let rs = s.indexOf('.') // 返回某个指定的字符串值在字符串中首次出现的位置；如果字符串值没有出现，返回-1；
+
+  // 没有小数点时：
+  if (rs < 0) {
+    console.log(1)
+    rs = s.length
+    s += '.'
+    while (s.length <= rs + 2) {
+      s += '0'
+    }
+    return s
+  } else {
+    const [v] = s.match(/^\d+(?:\.\d{0,2})?/)
+    return v
+  }
+}
 
 export default {
   name: 'TestVue2Demo02View',
@@ -187,17 +226,32 @@ export default {
       currentEditIndex: -1,
 
       // 正在编辑的行 备份
-      row_copy: {}
+      row_copy: {},
+
+      // 计算结果
+      calc_result: 0
+    }
+  },
+  computed: {
+    calcResFixed() {
+      return fixed2Number(this.calc_result)
     }
   },
   created() {
-    // 给所有行初始化一个响应式数据 edit 标识 √
-    this.tableData = cloneDeep(tableData).map((row) => {
-      row.edit = false
-      return row
-    })
+    this.init()
   },
   methods: {
+    /**
+     * @description 初始化表格 √
+     * @return void
+     */
+    init() {
+      // 给所有行初始化一个响应式数据 edit 标识 √
+      this.tableData = cloneDeep(tableData).map((row) => {
+        row.edit = false
+        return row
+      })
+    },
     /**
      * @description 左侧操作，点击编辑 √
      * @return void
@@ -314,6 +368,80 @@ export default {
       this.row_copy = {
         edit: false
       }
+    },
+
+    /**
+     * @description 顶部操作，重置 √
+     * @return void
+     */
+    handleClickReset() {
+      // 弹窗控制器
+      this.dialogFormVisible = false
+
+      // 弹窗名
+      this.dialogName = '编辑行'
+
+      // 弹窗状态:编辑 或者 新增 或者 为空
+      this.dialogState = ''
+
+      // 表格数据
+      this.tableData = tableData
+
+      // 当前正在编辑的行索引
+      this.currentEditIndex = -1
+
+      // 正在编辑的行 备份
+      this.row_copy = {}
+
+      // 计算结果
+      this.calc_result = 0
+
+      this.init()
+    },
+
+    /**
+     * @description 计算平均值 √
+     * @return {Number}
+     */
+    calcResult() {
+      // 表格需要参与计算的key
+      const dialogKeys = ['age', 'income', 'expend']
+
+      const lastRow = dialogKeys.map((key) => {
+        let isCalc = false
+        let colCount = 0
+        let n = 0
+
+        this.tableData.forEach((row) => {
+          if (
+            row[key] === undefined ||
+            row[key] === null ||
+            row[key].toString().replace(/\s*/g, '') === ''
+          ) {
+            console.log('单元格数据不存在')
+          } else {
+            isCalc = true
+            colCount = NP.plus(colCount, Number(row[key]))
+            n += 1
+          }
+        })
+        console.log(colCount)
+
+        const averageValue = NP.divide(colCount, n)
+        // console.log(typeof averageValue) // number, 如果涉及高精度数值保存的话 显示请用其他变量映射(例: computed)
+        return isCalc ? [averageValue] : []
+      })
+
+      return mean(lastRow.flat())
+    }
+  },
+  watch: {
+    tableData: {
+      deep: true,
+      handler(val) {
+        this.calc_result = this.calcResult()
+      },
+      immediate: true
     }
   }
 }
