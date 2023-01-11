@@ -8,9 +8,9 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
-import { watch } from 'vue'
+// import { watch } from 'vue'
 
-console.log('ref', watch)
+// console.log('ref', watch)
 
 export default {
   name: 'HomeView',

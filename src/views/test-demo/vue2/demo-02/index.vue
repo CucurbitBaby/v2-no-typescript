@@ -4,7 +4,10 @@
       <dt style="margin-bottom: 15px">表格计算</dt>
       <dd>
         <el-button type="primary" size="small" @click="handleClickAdd">
-          普通新增
+          弹窗新增
+        </el-button>
+        <el-button type="primary" plain size="small" @click="handleClickAddRow">
+          新增空行
         </el-button>
         <el-button type="info" plain size="small" @click="handleClickReset">
           重置表格
@@ -193,7 +196,7 @@ const fixed2Number = (x) => {
 
   // 没有小数点时：
   if (rs < 0) {
-    console.log(1)
+    // console.log('没有小数点时：')
     rs = s.length
     s += '.'
     while (s.length <= rs + 2) {
@@ -358,7 +361,7 @@ export default {
     },
 
     /**
-     * @description 顶部操作，普通新增 √
+     * @description 顶部操作，弹窗新增 √
      * @return void
      */
     handleClickAdd() {
@@ -368,6 +371,23 @@ export default {
       this.row_copy = {
         edit: false
       }
+    },
+
+    /**
+     * @description 顶部操作，新增空行 √
+     * @return void
+     */
+    handleClickAddRow() {
+      this.row_copy = {}
+      this.currentEditIndex = -1
+
+      this.tableData.forEach((row) => {
+        row.edit = false
+      })
+
+      this.tableData.push({
+        edit: true
+      })
     },
 
     /**
@@ -397,6 +417,10 @@ export default {
       this.calc_result = 0
 
       this.init()
+      this.$message({
+        message: '表格重置成功！',
+        type: 'success'
+      })
     },
 
     /**
@@ -425,10 +449,14 @@ export default {
             n += 1
           }
         })
-        console.log(colCount)
+        // console.log(colCount)
 
         const averageValue = NP.divide(colCount, n)
         // console.log(typeof averageValue) // number, 如果涉及高精度数值保存的话 显示请用其他变量映射(例: computed)
+        console.group(`${key}列`)
+        console.log('平均数', averageValue)
+        console.groupEnd()
+
         return isCalc ? [averageValue] : []
       })
 
