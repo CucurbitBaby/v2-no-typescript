@@ -15,7 +15,7 @@
       <span slot="title">主页</span>
     </el-menu-item>
 
-    <el-submenu index="1">
+    <el-submenu index="/test-demo">
 
       <template slot="title">
         <i class="el-icon-tickets"></i>
@@ -31,9 +31,10 @@
         <el-menu-item index="/about">About</el-menu-item>
       </el-menu-item-group>
       -->
-      <el-submenu index="/test-axios">
-        <template slot="title">axios</template>
-        <el-menu-item index="/test-axios/demo-01">多个实例拦截器</el-menu-item>
+
+      <el-submenu index="/test-demo/axios">
+        <template slot="title"><ic />axios</template>
+        <el-menu-item index="/test-demo/axios/demo-01"><ic />选项1</el-menu-item>
       </el-submenu>
 
       <!--
@@ -42,19 +43,54 @@
         </el-menu-item-group>
       -->
 
-      <el-submenu index="1-3">
-        <template slot="title">选项3</template>
-        <el-menu-item index="1-3-1">选项1</el-menu-item>
+      <el-submenu index="/test-demo/vue2">
+        <template slot="title"><ic />Vue2</template>
+        <el-menu-item index="/test-demo/vue2/demo-01"><ic />v-if和slot同时用</el-menu-item>
+        <el-menu-item index="/test-demo/vue2/demo-02"><ic />表格计算</el-menu-item>
       </el-submenu>
 
       <el-submenu index="1-4">
-        <template slot="title">选项4</template>
-        <el-menu-item index="1-4-1">选项1</el-menu-item>
+        <template slot="title"><ic />Vue3</template>
+        <el-menu-item index="1-4-1"><ic />选项1</el-menu-item>
+      </el-submenu>
+
+      <el-submenu index="1-5">
+        <template slot="title"><ic />选项5</template>
+        <el-menu-item index="1-4-1"><ic />选项1</el-menu-item>
       </el-submenu>
 
     </el-submenu>
 
-    <el-menu-item index="2">
+    <el-submenu index="/vue2-demo">
+
+      <template slot="title">
+        <i class="el-icon-tickets"></i>
+        <span>Vue2</span>
+      </template>
+
+      <el-submenu index="/vue2-demo/composition-api">
+        <template slot="title"><ic />CompositionAPI</template>
+        <el-menu-item index="/vue2-demo/composition-api/demo-01"><ic />选项1</el-menu-item>
+      </el-submenu>
+
+      <el-submenu index="1-3">
+        <template slot="title"><ic />选项3</template>
+        <el-menu-item index="1-3-1"><ic />选项1</el-menu-item>
+      </el-submenu>
+
+      <el-submenu index="1-4">
+        <template slot="title"><ic />选项4</template>
+        <el-menu-item index="1-4-1"><ic />选项1</el-menu-item>
+      </el-submenu>
+
+      <el-submenu index="1-5">
+        <template slot="title"><ic />选项5</template>
+        <el-menu-item index="1-4-1"><ic />选项1</el-menu-item>
+      </el-submenu>
+
+    </el-submenu>
+
+    <el-menu-item index="3">
       <i class="el-icon-tickets"></i>
       <span slot="title">导航二</span>
     </el-menu-item>
@@ -74,8 +110,13 @@
 </template>
 
 <script>
+import ic from '@/components/navigation-icon'
+
 export default {
   name: 'LeftNav',
+  components: {
+    ic
+  },
   methods: {
     handleOpen(key, keyPath) {
       // console.log(key, keyPath)

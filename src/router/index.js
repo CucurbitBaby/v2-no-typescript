@@ -2,7 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Layout from '@/layout'
-import testAxiosRouter from './test-axios'
+// import testAxiosRouter from './test-axios'
+// import testVue2Router from './test-vue2'
+// import vueDemoRouter from './vue2-demo'
+
+import { testAxiosRouter, testVue2Router } from './test-demo'
+import { compositionApiRouter } from './vue2-demo'
 
 Vue.use(VueRouter)
 
@@ -18,7 +23,9 @@ const routes = [
     }]
   },
 
-  testAxiosRouter
+  testAxiosRouter,
+  testVue2Router,
+  compositionApiRouter
 
 ]
 
