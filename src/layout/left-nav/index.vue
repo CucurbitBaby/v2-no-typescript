@@ -54,9 +54,10 @@
         <el-menu-item index="1-4-1"><ic />选项1</el-menu-item>
       </el-submenu>
 
-      <el-submenu index="1-5">
-        <template slot="title"><ic />选项5</template>
-        <el-menu-item index="1-4-1"><ic />选项1</el-menu-item>
+      <el-submenu index="/test-demo/element-ui">
+        <template slot="title"><ic />ElementUI</template>
+        <el-menu-item index="/test-demo/element-ui/demo-01"><ic />el-cascader</el-menu-item>
+        <el-menu-item index="/test-demo/element-ui/demo-02"><ic />懒加载 cascader</el-menu-item>
       </el-submenu>
 
     </el-submenu>
@@ -73,20 +74,35 @@
         <el-menu-item index="/vue2-demo/composition-api/demo-01"><ic />选项1</el-menu-item>
       </el-submenu>
 
-      <el-submenu index="1-3">
-        <template slot="title"><ic />选项3</template>
+      <!--
+        模板
+        <el-submenu index="1-3">
+        <template slot="title"><ic />选项2</template>
         <el-menu-item index="1-3-1"><ic />选项1</el-menu-item>
       </el-submenu>
+      -->
 
-      <el-submenu index="1-4">
-        <template slot="title"><ic />选项4</template>
-        <el-menu-item index="1-4-1"><ic />选项1</el-menu-item>
+    </el-submenu>
+
+    <el-submenu index="/data-structures-and-algorithms">
+
+      <template slot="title">
+        <i class="el-icon-tickets"></i>
+        <span>数据结构与算法</span>
+      </template>
+
+      <el-submenu index="/data-structures-and-algorithms/tree">
+        <template slot="title"><ic />tree</template>
+        <el-menu-item index="/data-structures-and-algorithms/tree/demo-01"><ic />城市树</el-menu-item>
       </el-submenu>
 
-      <el-submenu index="1-5">
-        <template slot="title"><ic />选项5</template>
-        <el-menu-item index="1-4-1"><ic />选项1</el-menu-item>
+      <!--
+        模板
+        <el-submenu index="1-3">
+        <template slot="title"><ic />选项2</template>
+        <el-menu-item index="1-3-1"><ic />选项1</el-menu-item>
       </el-submenu>
+      -->
 
     </el-submenu>
 
