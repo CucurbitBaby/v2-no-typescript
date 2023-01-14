@@ -2,11 +2,13 @@
   <div>
     <dl>
       <dt>解决 el-cascader 卡死</dt>
-      <dd></dd>
+      <dd>
+      </dd>
     </dl>
     <div>
       <div class="box-shadow--blue">
-        <el-cascader :props="props" @change="handleChange"></el-cascader>
+        <el-cascader v-model="cityValue" :props="props" @change="handleChange"></el-cascader>
+        {{ cityValue }}
       </div>
     </div>
   </div>

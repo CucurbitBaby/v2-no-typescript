@@ -47,6 +47,8 @@
         <template slot="title"><ic />Vue2</template>
         <el-menu-item index="/test-demo/vue2/demo-01"><ic />v-if和slot同时用</el-menu-item>
         <el-menu-item index="/test-demo/vue2/demo-02"><ic />表格计算</el-menu-item>
+        <el-menu-item index="/test-demo/vue2/demo-03"><ic />嵌套mixins钩子</el-menu-item>
+        <el-menu-item index="/test-demo/vue2/demo-04"><ic />mixins 数据</el-menu-item>
       </el-submenu>
 
       <el-submenu index="1-4">

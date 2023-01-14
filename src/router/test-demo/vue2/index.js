@@ -13,6 +13,16 @@ export default {
       path: 'vue2/demo-02',
       name: 'test-demo-vue2-demo-02',
       component: () => import('@/views/test-demo/vue2/demo-02/index.vue')
+    },
+    {
+      path: 'vue2/demo-03',
+      name: 'test-demo-vue2-demo-03',
+      component: () => import('@/views/test-demo/vue2/demo-03/index.vue')
+    },
+    {
+      path: 'vue2/demo-04',
+      name: 'test-demo-vue2-demo-04',
+      component: () => import('@/views/test-demo/vue2/demo-04/index.vue')
     }
   ]
 }

@@ -34,20 +34,21 @@ export default {
   name: 'TestElementUiDemo01View',
   data() {
     return {
-      cityCtrol: [],
-      cityJson: []
+      cityCtrol: [{ cityList: [], cityValue: [], id: uuidv4() }]
     }
   },
   created() {
     getCity().then((res) => {
-      this.cityJson = res
-      this.cityCtrol.push({ cityList: this.cityJson, cityValue: [], id: uuidv4() })
+      // console.log(res)
+      this.cityCtrol[0].cityList = res
     })
   },
   methods: {
     uuidv4,
     handleClickAdd() {
-      this.cityCtrol.push({ cityList: this.cityJson, cityValue: [], id: uuidv4() })
+      getCity().then((res) => {
+        this.cityCtrol.push({ cityList: res, cityValue: [], id: uuidv4() })
+      })
     }
   }
 }
