@@ -60,6 +60,9 @@
         <template slot="title"><ic />ElementUI</template>
         <el-menu-item index="/test-demo/element-ui/demo-01"><ic />el-cascader</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-02"><ic />懒加载 cascader</el-menu-item>
+        <el-menu-item index="/test-demo/element-ui/demo-03"><ic />懒加载回显</el-menu-item>
+        <el-menu-item index="/test-demo/element-ui/demo-04"><ic />试用倒计时</el-menu-item>
+        <el-menu-item index="/test-demo/element-ui/demo-05"><ic />普通分页回显</el-menu-item>
       </el-submenu>
 
     </el-submenu>

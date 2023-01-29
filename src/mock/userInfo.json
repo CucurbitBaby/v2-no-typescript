@@ -1,0 +1,15 @@
+{
+  "code": 200,
+  "data": {
+    "list|160": [{
+      "userid": "@id()",
+      "username": "@cname()",
+      "date": "@date()",
+      "avatar": "@image('200x200','red','#fff','avatar')",
+      "description": "@paragraph()",
+      "ip": "@ip()",
+      "email": "@email()",
+      "city": "@city(true)"
+    }]
+  }
+}

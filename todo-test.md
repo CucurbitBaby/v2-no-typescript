@@ -10,6 +10,7 @@
     - [开箱即用 - fastmock](https://www.fastmock.site/#/projects)
         - [mockjs 通用语法](https://github.com/nuysoft/Mock/wiki)
     - 开箱即用 - other?
+    - todo 本地mock服务
 ### 自定义图标
 ### 嵌套路由的demo
 - jspang 子路由
