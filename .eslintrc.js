@@ -11,6 +11,12 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'space-before-function-paren': 0,
-    camelcase: 'off'
+    camelcase: 'off',
+    "vue/multi-word-component-names": [
+      "error",
+      {
+        ignores: ["index"], //需要忽略的组件名
+      },
+    ],
   }
 }
