@@ -299,20 +299,42 @@ export default {
     // 合计
     getSummaries(param) {
       const { columns, data } = param
-      const sums = []
+      let data1 = []
+      let data2 = []
+      data.map(item=>{
+        if (item.materialName == '马瑞') {
+          data1.push(item)
+        } else {
+          data2.push(item)
+        }
+      })
+       let values1 = [];
+       let values2 = [];
+       let values3 = [];1111111
+       let mrTotal = [];
+       let other = [];
+       let sums = [];
       // 这里应该是从左往右遍历表头
       columns.forEach((column, index) => {
         if (index === 0) {
           // 这里应该是填充最后一行数据
-          sums[index] = '统计'
+         mrTotal.push('马瑞到货合计')
+         other.push('沥青到货合计')
+         sums.push('其他沥青到货合计')
           return
         }
         // 获取一列的数据数组
-        let values;
+       
         if (index > 5) {
-          values = data.map((item) => {
-          return Number(item.bigDecimals[column.property])
-        })
+          values1 = data.map((item) => {
+            return Number(item.bigDecimals[column.property])
+          })
+          values2 = data.map((item) => {
+            return Number(item.bigDecimals[column.property])
+          })
+          values3 = data.map((item) => {
+            return Number(item.bigDecimals[column.property])
+          })
         } else {
           values = data.map((item) => {
           return Number(item[column.property])
