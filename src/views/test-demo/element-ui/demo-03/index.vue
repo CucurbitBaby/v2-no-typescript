@@ -46,6 +46,7 @@ export default {
         lazyLoad(node, resolve) {
           if (node.root) {
             getCity().then((res) => {
+              console.log(res)
               this.cityList = res.length ? res : []
               resolve(
                 this.cityList.map((item) => {

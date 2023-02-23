@@ -21,8 +21,6 @@ module.exports = function ({ app }) {
     const mockJson = _json || Mock.mock(json)
     _json = mockJson
 
-    console.log(JSON.stringify(mockJson.data.list, null, 4))
-
     const mockResponder = _.cloneDeep(mockJson)
 
     mockResponder.data.list = mockJson.data.list.filter((item, index) => index < limit * page && index >= limit * (page - 1))

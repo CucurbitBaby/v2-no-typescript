@@ -1,9 +1,8 @@
 <template>
   <div style="margin: 15px">
-    <h3>普通分页回显</h3>
+    <h3>后端分页回显</h3>
     <ol>
-      <li>干干净净，只有回显</li>
-      <li>模拟请求，回显原理</li>
+      <li>真实请求，前端回显</li>
     </ol>
 
     <el-table
@@ -15,11 +14,11 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" width="55" />
-      <el-table-column label="日期" width="120">
-        <template slot-scope="scope">{{ scope.row.date }}</template>
-      </el-table-column>
-      <el-table-column prop="name" label="姓名" width="120" />
-      <el-table-column prop="address" label="地址" show-overflow-tooltip />
+      <el-table-column prop="username" label="姓名"/>
+      <el-table-column prop="date" label="生日"/>
+      <el-table-column prop="ip" label="IP" />
+      <el-table-column prop="email" label="邮箱" />
+      <el-table-column prop="city" label="城市" />
     </el-table>
 
     <el-pagination
@@ -36,7 +35,7 @@
 </template>
 
 <script>
-import tableData from './tableData'
+import axios from 'axios'
 
 const map = new Map()
 let newList = []
@@ -45,19 +44,30 @@ export default {
   name: 'TestElementUiDemo05View',
   data() {
     return {
-      tableData: tableData,
       showTableData: [],
       currentPage: 1, // 这个属性是页面加载时分页组件默认选中的页码
       pageTotal: 0,
-      pageSize: 5,
+      pageSize: 10,
       multipleSelection: []
     }
   },
   mounted() {
-    this.pageTotal = this.tableData.length
-    this.showTableData = this.tableData.slice(0, 5)
+    this.getList()
   },
   methods: {
+    getList() {
+      const page = this.currentPage
+      const limit = this.pageSize
+
+      axios.get(`/user/userinfo/?page=${page}&limit=${limit}`).then(({ data: res }) => {
+        if (res.code === 200 && res.data) {
+          this.showTableData = res.data.list
+          this.pageTotal = res.data.total
+          console.log(this.showTableData)
+          this.updateEcho()
+        }
+      })
+    },
     updateEcho() {
       const list = [...newList]
       this.$nextTick(() => {
@@ -75,24 +85,17 @@ export default {
      * PageSize 修改页面默认显示条数
      * */
     handleSizeChange(val) {
+      // this.showTableData = this.tableData.slice(0, val)
       this.pageSize = val
-      this.showTableData = this.tableData.slice(0, val)
-
-      this.updateEcho()
+      this.getList()
+      // this.updateEcho()
     },
     /**
      * 修改页码
      * */
     handleCurrentChange(val) {
       this.currentPage = val
-      this.showTableData = this.tableData.slice(
-        (val - 1) * Number(this.pageSize),
-        val * Number(this.pageSize)
-      )
-      // 因为是模拟数据,所以只能在分页上进行回显,正常状态下应该是向后台重新拉取到数据列表的时候,切是在渲染表数据赋值之后进行
-      // ==============================================以下皆为模拟后台返回数据之后进行
-
-      this.updateEcho()
+      this.getList()
     },
     /**
      * 批量选中

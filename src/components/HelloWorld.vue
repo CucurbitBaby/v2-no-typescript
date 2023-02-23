@@ -5,6 +5,17 @@
     <ul>
       <li><a href="/test-demo/element-ui/demo-05" target="_blank" rel="noopener">普通分页回显</a></li>
     </ul>
+
+    <br>
+    <hr>
+    <br>
+
+    <div class="test-box">
+      <div class="pos-box">
+        <el-input v-model="input" placeholder="请输入内容"></el-input>
+        <input type="text" name="lname"><br>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,6 +24,11 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      input: '111'
+    }
   }
 }
 </script>
@@ -32,5 +48,21 @@ li {
 }
 a {
   color: #42b983;
+}
+
+// 测试
+.test-box {
+  width: 300px;
+  height: 300px;
+  border: 1px solid red;
+  position: absolute;
+}
+.pos-box {
+  width: 300px;
+  height: 300px;
+  border: 1px solid blue;
+  position: absolute;
+  top: -100px;
+  right: -100px;
 }
 </style>

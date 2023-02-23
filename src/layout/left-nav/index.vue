@@ -63,6 +63,11 @@
         <el-menu-item index="/test-demo/element-ui/demo-03"><ic />懒加载回显</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-04"><ic />试用倒计时</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-05"><ic />普通分页回显</el-menu-item>
+        <el-menu-item index="/test-demo/element-ui/demo-06"><ic />后端分页回显</el-menu-item>
+        <el-menu-item index="/test-demo/element-ui/demo-07"><ic />混入默认回显</el-menu-item>
+        <el-menu-item index="/test-demo/element-ui/demo-08"><ic />混入双向绑定</el-menu-item>
+        <el-menu-item index="/test-demo/element-ui/demo-09"><ic />简单模态回显</el-menu-item>
+        <el-menu-item index="/test-demo/element-ui/demo-10"><ic />复杂模态回显</el-menu-item>
       </el-submenu>
 
     </el-submenu>
