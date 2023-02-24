@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import UmyUi from 'umy-ui'
+import 'umy-ui/lib/theme-chalk/index.css'
 import '@/styles/index.scss' // global css
 
 import App from './App.vue'
@@ -11,6 +13,7 @@ import store from './store'
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
+Vue.use(UmyUi)
 
 new Vue({
   router,

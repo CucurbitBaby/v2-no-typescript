@@ -1,6 +1,6 @@
 <template>
   <div>
-    <dt style="margin-bottom: 15px">表格合并行和列并添加合计 <el-button>导出</el-button></dt>
+    <dt style="margin-bottom: 15px">表格合并行拼接动态表头 <el-button>导出</el-button></dt>
     <el-table
       :data="tableData"
       border

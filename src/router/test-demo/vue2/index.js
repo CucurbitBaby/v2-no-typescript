@@ -33,6 +33,11 @@ export default {
       path: 'vue2/demo-06',
       name: 'test-demo-vue2-demo-06',
       component: () => import('@/views/test-demo/vue2/demo-06/index.vue')
+    },
+    {
+      path: 'vue2/demo-07',
+      name: 'test-demo-vue2-demo-07',
+      component: () => import('@/views/test-demo/vue2/demo-07/index.vue')
     }
   ]
 }

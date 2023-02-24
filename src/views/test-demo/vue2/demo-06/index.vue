@@ -1,31 +1,68 @@
 <template>
   <div>
-    <dt style="margin-bottom: 15px">表格合并行和列并添加合计 <el-button>导出</el-button></dt>
-    <el-table
+    <dt style="margin-bottom: 15px">
+      添加多行合计 <el-button @click="exportExcel">导出</el-button>
+    </dt>
+    <u-table
       :data="tableData"
-      border
+      border id="tableOut"
       :span-method="spanMethod"
       show-summary
       :summary-method="getSummaries"
       style="width: 100%"
     >
-      <el-table-column prop="materialName" label="原料类别" width="180"></el-table-column>
-      <el-table-column prop="portOfDestination" label="港口" width="180"></el-table-column>
-      <el-table-column prop="contractNumber" label="合同号" width="180"></el-table-column>
-      <el-table-column prop="outHarborQuantity" label="合同未到货量" width="180"></el-table-column>
-      <el-table-column prop="plannedTransportationVolume" label="排货计划合计" width="180"></el-table-column>
-      <el-table-column prop="remainingQuantityPort" label="在港剩余量" width="180"></el-table-column>
+      <u-table-column
+        prop="materialName"
+        label="原料类别"
+        width="180"
+      ></u-table-column>
+      <u-table-column
+        prop="portOfDestination"
+        label="港口"
+        width="180"
+      ></u-table-column>
+      <u-table-column
+        prop="contractNumber"
+        label="合同号"
+        width="180"
+      ></u-table-column>
+      <u-table-column
+        prop="outHarborQuantity"
+        label="合同未到货量"
+        width="180"
+      ></u-table-column>
+      <u-table-column
+        prop="plannedTransportationVolume"
+        label="排货计划合计"
+        width="180"
+      ></u-table-column>
+      <u-table-column
+        prop="remainingQuantityPort"
+        label="在港剩余量"
+        width="180"
+      ></u-table-column>
       <!-- 拼接动态表头 -->
-      <el-table-column v-for="(item,index) in dateArr" :key="index" :prop="item">
-        <template slot="header">{{ item.substring(4,6)+'.'+ item.substring(6,8)}}</template>
-        <template slot-scope="scope">{{scope.row.bigDecimals[item]}}</template>
-      </el-table-column>
-    </el-table>
+      <u-table-column
+        width="120"
+        v-for="(item, index) in dateArr"
+        :key="index"
+        :prop="item"
+      >
+        <template slot="header">{{
+          item.substring(4, 6) + '.' + item.substring(6, 8)
+        }}</template>
+        <template slot-scope="scope">{{
+          scope.row.bigDecimals[item]
+        }}</template>
+      </u-table-column>
+    </u-table>
   </div>
 </template>
 
 <script>
 /* eslint-disable */
+import FileSaver from 'file-saver'
+import XLSX from 'xlsx'
 export default {
   name: 'test',
   data() {
@@ -301,49 +338,59 @@ export default {
       const { columns, data } = param
       let data1 = []
       let data2 = []
-      data.map(item=>{
+      data.map((item) => {
         if (item.materialName == '马瑞') {
           data1.push(item)
         } else {
           data2.push(item)
         }
       })
-       let values1 = [];
-       let values2 = [];
-       let values3 = [];1111111
-       let mrTotal = [];
-       let other = [];
-       let sums = [];
+      let values1 = []
+      let values2 = []
+      let values3 = []
+      let mrTotal = []
+      let other = []
+      let sums = []
       // 这里应该是从左往右遍历表头
       columns.forEach((column, index) => {
         if (index === 0) {
           // 这里应该是填充最后一行数据
-         mrTotal.push('马瑞到货合计')
-         other.push('沥青到货合计')
-         sums.push('其他沥青到货合计')
+          mrTotal.push('马瑞到货合计')
+          other.push('沥青到货合计')
+          sums.push('其他沥青到货合计')
           return
+        } else if (index === 1 || index === 2) {
+          mrTotal[index] = ''
+          other[index] = ''
+          sums[index] = ''
         }
         // 获取一列的数据数组
-       
+
         if (index > 5) {
-          values1 = data.map((item) => {
+          values1 = data1.map((item) => {
             return Number(item.bigDecimals[column.property])
           })
-          values2 = data.map((item) => {
+          values2 = data2.map((item) => {
             return Number(item.bigDecimals[column.property])
           })
           values3 = data.map((item) => {
             return Number(item.bigDecimals[column.property])
           })
         } else {
-          values = data.map((item) => {
-          return Number(item[column.property])
-        })
+          values1 = data1.map((item) => {
+            return Number(item[column.property])
+          })
+          values2 = data2.map((item) => {
+            return Number(item[column.property])
+          })
+          values3 = data.map((item) => {
+            return Number(item[column.property])
+          })
         }
-         
-        if (!values.every((value) => isNaN(value))) {
+
+        if (!values1.every((value) => isNaN(value))) {
           // 这里应该是填充最后一行数据
-          sums[index] = values.reduce((prev, curr) => {
+          mrTotal[index] = values1.reduce((prev, curr) => {
             const value = Number(curr)
             if (!isNaN(value)) {
               return Number((prev + curr).toFixed(2))
@@ -351,20 +398,63 @@ export default {
               return prev
             }
           }, 0)
+          mrTotal[index]
         } else {
           // 这里应该是填充最后一行数据
-          sums[index] = ''
+          mrTotal[index] = 0
+        }
+        if (!values2.every((value) => isNaN(value))) {
+          // 这里应该是填充最后一行数据
+          other[index] = values2.reduce((prev, curr) => {
+            const value = Number(curr)
+            if (!isNaN(value)) {
+              return Number((prev + curr).toFixed(2))
+            } else {
+              return prev
+            }
+          }, 0)
+          other[index]
+        } else {
+          // 这里应该是填充最后一行数据
+          other[index] = 0
+        }
+        if (!values3.every((value) => isNaN(value))) {
+          // 这里应该是填充最后一行数据
+          sums[index] = values3.reduce((prev, curr) => {
+            const value = Number(curr)
+            if (!isNaN(value)) {
+              return Number((prev + curr).toFixed(2))
+            } else {
+              return prev
+            }
+          }, 0)
+          sums[index]
+        } else {
+          // 这里应该是填充最后一行数据
+          sums[index] = 0
         }
       })
       // 得到最后一列数据， 我猜测的，验证一下。 就是这样的
-      return sums
-    }
+      return [mrTotal, other, sums]
+    },
+    exportExcel() {
+      var xlsxParam = { raw: true }
+      var wb = XLSX.utils.table_to_book(document.querySelector('#tableOut'), xlsxParam)
+      var wbout = XLSX.write(wb, {
+        bookType: 'xlsx',
+        bookSST: true,
+        type: 'array'
+      })
+      try {
+        FileSaver.saveAs(new Blob([wbout], { type: 'application/octet-stream' }), '表格导出.xlsx')
+      } catch (e) {
+        if (typeof console !== 'undefined') console.log(e, wbout)
+      }
+      return wbout
+    },
   }
 }
 </script>
-
-<style>
-</style>
 
 <style>
 /* 将表格底部的滚动条放在合计下面 */

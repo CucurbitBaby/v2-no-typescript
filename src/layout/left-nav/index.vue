@@ -49,9 +49,9 @@
         <el-menu-item index="/test-demo/vue2/demo-02"><ic />表格计算</el-menu-item>
         <el-menu-item index="/test-demo/vue2/demo-03"><ic />嵌套mixins钩子</el-menu-item>
         <el-menu-item index="/test-demo/vue2/demo-04"><ic />mixins 数据</el-menu-item>
-        <el-menu-item index="/test-demo/vue2/demo-05"><ic />表格合并合计</el-menu-item>
+        <el-menu-item index="/test-demo/vue2/demo-05"><ic />表格合并</el-menu-item>
         <el-menu-item index="/test-demo/vue2/demo-06"><ic />表格多个合计</el-menu-item>
-
+        <el-menu-item index="/test-demo/vue2/demo-07"><ic />嵌套表单验证</el-menu-item>
       </el-submenu>
 
       <el-submenu index="1-4">
