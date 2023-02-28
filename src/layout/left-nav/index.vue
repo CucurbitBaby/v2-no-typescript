@@ -52,6 +52,7 @@
         <el-menu-item index="/test-demo/vue2/demo-05"><ic />表格合并</el-menu-item>
         <el-menu-item index="/test-demo/vue2/demo-06"><ic />表格多个合计</el-menu-item>
         <el-menu-item index="/test-demo/vue2/demo-07"><ic />嵌套表单验证</el-menu-item>
+        <el-menu-item index="/test-demo/vue2/demo-08"><ic />多滚动条联动</el-menu-item>
       </el-submenu>
 
       <el-submenu index="1-4">
@@ -71,6 +72,11 @@
         <el-menu-item index="/test-demo/element-ui/demo-08"><ic />混入双向绑定</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-09"><ic />简单模态回显</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-10"><ic />复杂模态回显</el-menu-item>
+      </el-submenu>
+      <el-submenu index="/test-demo/chart">
+        <template slot="title"><ic />大屏</template>
+        <el-menu-item @click="toFirst">大屏一</el-menu-item>
+        <el-menu-item @click="toSecond">大屏二</el-menu-item>
       </el-submenu>
 
     </el-submenu>
@@ -147,6 +153,8 @@ export default {
     ic
   },
   methods: {
+    toFirst() {},
+    toSecond() {},
     handleOpen(key, keyPath) {
       // console.log(key, keyPath)
     },
