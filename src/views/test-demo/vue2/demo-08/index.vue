@@ -1,67 +1,58 @@
 <template>
-  <div class="kkk">
-    <div class="myWrap">
-      <el-table
-        ref="one"
-        :data="tableBody"
-        border
-        :header-cell-style="{
-          background: '#FAFAFA',
-          color: '#333333',
-          fontWeight: 'bold',
-          fontSize: '14px'
-        }"
-        show-summary
-      >
-        <el-table-column type="index" label="序号" width="60">
-        </el-table-column>
-        <el-table-column
-          prop="bookType"
-          label="人物隶属"
-          width="100"
-        ></el-table-column>
-        <el-table-column prop="name" label="姓名" width="120"></el-table-column>
-        <el-table-column prop="zhifubao" label="支付宝" width="360">
-        </el-table-column>
-        <el-table-column prop="weixin" label="微信" width="360">
-        </el-table-column>
-        <el-table-column prop="jingdong" label="京东" width="360">
-        </el-table-column>
-        <el-table-column prop="yunshanfu" label="云闪付" width="360">
-        </el-table-column>
-        <el-table-column prop="suning" label="苏宁" width="360">
-        </el-table-column>
-        <el-table-column prop="lakala" label="拉卡拉" width="360">
-        </el-table-column>
-      </el-table>
-      <el-table
-        ref="two"
-        :data="tableBody2"
-        border
-        show-summary
-      >
-        <el-table-column type="index" label="序号" width="60">
-        </el-table-column>
-        <el-table-column
-          prop="bookType1"
-          label="业务类型1"
-          width="100"
-        ></el-table-column>
-        <el-table-column prop="name1" label="姓名1" width="120"></el-table-column>
-        <el-table-column prop="zhifubao1" label="支付宝1" width="360">
-        </el-table-column>
-        <el-table-column prop="weixin1" label="微信1" width="360">
-        </el-table-column>
-        <el-table-column prop="jingdong1" label="京东1" width="360">
-        </el-table-column>
-        <el-table-column prop="yunshanfu1" label="云闪付1" width="360">
-        </el-table-column>
-        <el-table-column prop="suning1" label="苏宁1" width="360">
-        </el-table-column>
-        <el-table-column prop="lakala1" label="拉卡拉1" width="360">
-        </el-table-column>
-      </el-table>
-    </div>
+  <div class="myWrap">
+    <el-table
+      ref="one"
+      :data="tableBody"
+      border
+      :header-cell-style="{
+        background: '#FAFAFA',
+        color: '#333333',
+        fontWeight: 'bold',
+        fontSize: '14px'
+      }"
+      show-summary
+    >
+      <el-table-column type="index" label="序号" width="60"> </el-table-column>
+      <el-table-column
+        prop="bookType"
+        label="人物隶属"
+        width="100"
+      ></el-table-column>
+      <el-table-column prop="name" label="姓名" width="120"></el-table-column>
+      <el-table-column prop="zhifubao" label="支付宝" width="360">
+      </el-table-column>
+      <el-table-column prop="weixin" label="微信" width="360">
+      </el-table-column>
+      <el-table-column prop="jingdong" label="京东" width="360">
+      </el-table-column>
+      <el-table-column prop="yunshanfu" label="云闪付" width="360">
+      </el-table-column>
+      <el-table-column prop="suning" label="苏宁" width="360">
+      </el-table-column>
+      <el-table-column prop="lakala" label="拉卡拉" width="360">
+      </el-table-column>
+    </el-table>
+    <el-table ref="two" :data="tableBody2" border show-summary>
+      <el-table-column type="index" label="序号" width="60"> </el-table-column>
+      <el-table-column
+        prop="bookType1"
+        label="业务类型1"
+        width="100"
+      ></el-table-column>
+      <el-table-column prop="name1" label="姓名1" width="120"></el-table-column>
+      <el-table-column prop="zhifubao1" label="支付宝1" width="360">
+      </el-table-column>
+      <el-table-column prop="weixin1" label="微信1" width="360">
+      </el-table-column>
+      <el-table-column prop="jingdong1" label="京东1" width="360">
+      </el-table-column>
+      <el-table-column prop="yunshanfu1" label="云闪付1" width="360">
+      </el-table-column>
+      <el-table-column prop="suning1" label="苏宁1" width="360">
+      </el-table-column>
+      <el-table-column prop="lakala1" label="拉卡拉1" width="360">
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 <script>

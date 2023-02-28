@@ -53,6 +53,7 @@
         <el-menu-item index="/test-demo/vue2/demo-06"><ic />表格多个合计</el-menu-item>
         <el-menu-item index="/test-demo/vue2/demo-07"><ic />嵌套表单验证</el-menu-item>
         <el-menu-item index="/test-demo/vue2/demo-08"><ic />多滚动条联动</el-menu-item>
+        <el-menu-item index="/test-demo/vue2/demo-09"><ic />多表格导出</el-menu-item>
       </el-submenu>
 
       <el-submenu index="1-4">
@@ -75,8 +76,8 @@
       </el-submenu>
       <el-submenu index="/test-demo/chart">
         <template slot="title"><ic />大屏</template>
-        <el-menu-item @click="toFirst">大屏一</el-menu-item>
-        <el-menu-item @click="toSecond">大屏二</el-menu-item>
+        <el-menu-item index="/test-demo/chart/demo-01" @click="toFirst"><ic/>大屏一</el-menu-item>
+        <el-menu-item index="/test-demo/chart/demo-02" @click="toSecond"><ic/>大屏二</el-menu-item>
       </el-submenu>
 
     </el-submenu>
