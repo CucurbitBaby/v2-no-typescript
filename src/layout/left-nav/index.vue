@@ -56,9 +56,9 @@
         <el-menu-item index="/test-demo/vue2/demo-09"><ic />多表格导出</el-menu-item>
       </el-submenu>
 
-      <el-submenu index="1-4">
+      <el-submenu index="/test-demo/vue3jiajia">
         <template slot="title"><ic />Vue3</template>
-        <el-menu-item index="1-4-1"><ic />选项1</el-menu-item>
+        <el-menu-item index="/test-demo/vue3jiajia/jiajiavue3"><ic />vue3jiajia</el-menu-item>
       </el-submenu>
 
       <el-submenu index="/test-demo/element-ui">
