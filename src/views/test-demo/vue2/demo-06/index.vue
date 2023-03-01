@@ -1,7 +1,7 @@
 <template>
   <div>
     <dt style="margin-bottom: 15px">
-      添加多行合计 <el-button @click="exportExcel">导出</el-button>
+      动态拼接表头 添加多行合计 <el-button @click="exportExcel">导出</el-button>
     </dt>
     <u-table
       :data="tableData"
