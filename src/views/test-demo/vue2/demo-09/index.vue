@@ -36,7 +36,7 @@
         </el-table-column>
       </el-table>
       <br>
-      <el-table ref="two" :data="tableBody2" border>
+      <el-table ref="two" :data="tableBody2" border :show-header="false">
         <el-table-column type="index" label="序号" width="60">
         </el-table-column>
         <el-table-column
