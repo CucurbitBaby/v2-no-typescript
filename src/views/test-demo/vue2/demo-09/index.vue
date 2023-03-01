@@ -167,11 +167,8 @@ export default {
       // 修改数组对象中对象属性名, 因为属性都是英文名, 所以要匹配成 中文 -------end
       const sheet1 = XLSX.utils.json_to_sheet(sheet1data) // json_to_sheet 将 JS 对象数组转换为工作表。 //aoa_to_sheet 将 JS 数据数组的数组转换为工作表。
       const sheet2 = XLSX.utils.json_to_sheet(sheet2data)
-      // const sheet1 = XLSX.utils.table_to_book(sheet1data) // json_to_sheet 将 JS 对象数组转换为工作表。 //aoa_to_sheet 将 JS 数据数组的数组转换为工作表。
-      // const sheet2 = XLSX.utils.table_to_book(sheet2data)
       /* create a new blank workbook */
       const wb = XLSX.utils.book_new()
-      console.log('wb', wb)
       XLSX.utils.book_append_sheet(wb, sheet1, '第一个')
       XLSX.utils.book_append_sheet(wb, sheet2, '第二个')
       const workbookBlob = this.workbook2blob(wb)
