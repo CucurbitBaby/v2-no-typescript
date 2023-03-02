@@ -22,20 +22,14 @@
           width="180"
         ></el-table-column>
         <el-table-column prop="name" label="姓名"></el-table-column>
-        <el-table-column prop="zhifubao" label="支付宝">
-        </el-table-column>
-        <el-table-column prop="weixin" label="微信">
-        </el-table-column>
-        <el-table-column prop="jingdong" label="京东">
-        </el-table-column>
-        <el-table-column prop="yunshanfu" label="云闪付">
-        </el-table-column>
-        <el-table-column prop="suning" label="苏宁">
-        </el-table-column>
-        <el-table-column prop="lakala" label="拉卡拉">
-        </el-table-column>
+        <el-table-column prop="zhifubao" label="支付宝"> </el-table-column>
+        <el-table-column prop="weixin" label="微信"> </el-table-column>
+        <el-table-column prop="jingdong" label="京东"> </el-table-column>
+        <el-table-column prop="yunshanfu" label="云闪付"> </el-table-column>
+        <el-table-column prop="suning" label="苏宁"> </el-table-column>
+        <el-table-column prop="lakala" label="拉卡拉"> </el-table-column>
       </el-table>
-      <br>
+      <br />
       <el-table ref="two" :data="tableBody2" border :show-header="false">
         <el-table-column type="index" label="序号" width="60">
         </el-table-column>
@@ -44,22 +38,13 @@
           label="业务类型1"
           width="180"
         ></el-table-column>
-        <el-table-column
-          prop="name1"
-          label="姓名1"
-        ></el-table-column>
-        <el-table-column prop="zhifubao1" label="支付宝1">
-        </el-table-column>
-        <el-table-column prop="weixin1" label="微信1">
-        </el-table-column>
-        <el-table-column prop="jingdong1" label="京东1">
-        </el-table-column>
-        <el-table-column prop="yunshanfu1" label="云闪付1">
-        </el-table-column>
-        <el-table-column prop="suning1" label="苏宁1">
-        </el-table-column>
-        <el-table-column prop="lakala1" label="拉卡拉1">
-        </el-table-column>
+        <el-table-column prop="name1" label="姓名1"></el-table-column>
+        <el-table-column prop="zhifubao1" label="支付宝1"> </el-table-column>
+        <el-table-column prop="weixin1" label="微信1"> </el-table-column>
+        <el-table-column prop="jingdong1" label="京东1"> </el-table-column>
+        <el-table-column prop="yunshanfu1" label="云闪付1"> </el-table-column>
+        <el-table-column prop="suning1" label="苏宁1"> </el-table-column>
+        <el-table-column prop="lakala1" label="拉卡拉1"> </el-table-column>
       </el-table>
     </div>
   </div>
@@ -167,7 +152,6 @@ export default {
       // 修改数组对象中对象属性名, 因为属性都是英文名, 所以要匹配成 中文 -------end
       const sheet1 = XLSX.utils.json_to_sheet(sheet1data) // json_to_sheet 将 JS 对象数组转换为工作表。 //aoa_to_sheet 将 JS 数据数组的数组转换为工作表。
       const sheet2 = XLSX.utils.json_to_sheet(sheet2data)
-      /* create a new blank workbook */
       const wb = XLSX.utils.book_new()
       XLSX.utils.book_append_sheet(wb, sheet1, '第一个')
       XLSX.utils.book_append_sheet(wb, sheet2, '第二个')
@@ -180,7 +164,6 @@ export default {
       const wopts = {
         // 要生成的文件类型
         bookType: 'xlsx',
-        // // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容性
         bookSST: false,
         type: 'binary'
       }
@@ -206,29 +189,24 @@ export default {
       aLink.href = blob
       // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，有时候 file:///模式下不会生效
       aLink.download = fileName || ''
-      let event
-      if (window.MouseEvent) event = new MouseEvent('click')
-      //   移动端
-      else {
-        event = document.createEvent('MouseEvents')
-        event.initMouseEvent(
-          'click',
-          true,
-          false,
-          window,
-          0,
-          0,
-          0,
-          0,
-          0,
-          false,
-          false,
-          false,
-          false,
-          0,
-          null
-        )
-      }
+      const event = document.createEvent('MouseEvents')
+      event.initMouseEvent(
+        'click',
+        true,
+        false,
+        window,
+        0,
+        0,
+        0,
+        0,
+        0,
+        false,
+        false,
+        false,
+        false,
+        0,
+        null
+      )
       aLink.dispatchEvent(event)
     }
   }
