@@ -68,6 +68,7 @@
         <el-menu-item index="/test-demo/element-ui/demo-08"><ic />混入双向绑定</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-09"><ic />简单模态回显</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-10"><ic />复杂模态回显</el-menu-item>
+        <el-menu-item index="/test-demo/element-ui/demo-11"><ic />表格多个合并</el-menu-item>
       </el-submenu>
 
     </el-submenu>
