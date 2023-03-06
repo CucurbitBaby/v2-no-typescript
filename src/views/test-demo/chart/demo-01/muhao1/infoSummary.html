@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/infoSummary.css">
+</head>
+
+<body scroll="no">
+  <header>
+    <div class="weather">
+      <span class="city"></span>&nbsp;&nbsp;
+      <img src="" />
+      <span class="dayweather"></span>&nbsp;&nbsp;
+      <span class="temp"></span>
+    </div>
+    <h1>大宗商品业务信息汇总表</h1>
+    <div class="date"></div>
+  </header>
+  <section>
+    <div class="count">
+      <!-- <%--<img src="plug-in/screen/image/1.jpg">--%> -->
+      <img src="./image/1-1.png">
+      <div class="right">
+        <div class="unit">年采购量(吨)</div>
+        <div class="num buyYearQuantity"></div>
+      </div>
+    </div>
+    <div class="count">
+      <!-- <%--<img src="plug-in/screen/image/2.jpg">--%> -->
+      <img src="./image/5-1.png">
+      <div class="right">
+        <div class="unit">年采购金额(万元)</div>
+        <div class="num buyYearAmount"></div>
+      </div>
+    </div>
+    <div class="count">
+      <!-- <%--<img src="plug-in/screen/image/3.jpg">--%> -->
+      <img src="./image/4-1.png">
+      <div class="right">
+        <div class="unit">年销售量(吨)</div>
+        <div class="num sellYearQuantity "></div>
+      </div>
+    </div>
+    <div class="count">
+      <!-- <%--<img src="plug-in/screen/image/4.jpg">--%> -->
+      <img src="./image/2-1.png">
+      <div class="right">
+        <div class="unit">年销售金额(万元)</div>
+        <div class="num sellYearAmount"></div>
+      </div>
+    </div>
+    <div class="count">
+      <!-- <%--<img src="plug-in/screen/image/5.jpg">--%> -->
+      <img src="./image/1-1.png">
+      <div class="right">
+        <div class="unit">月采购量(吨)</div>
+        <div class="num buyMonthQuantity"></div>
+      </div>
+    </div>
+    <div class="count">
+      <!-- <%--<img src="plug-in/screen/image/6.jpg">--%> -->
+      <img src="./image/5-1.png">
+      <div class="right">
+        <div class="unit">月采购金额(万元)</div>
+        <div class="num buyMonthAmount"></div>
+      </div>
+    </div>
+    <div class="count">
+      <!-- <%--<img src="plug-in/screen/image/7.jpg">--%> -->
+      <img src="./image/4-1.png">
+      <div class="right">
+        <div class="unit">月销售量(吨)</div>
+        <div class="num sellMonthQuantity"></div>
+      </div>
+    </div>
+    <div class="count">
+      <!-- <%--<img src="plug-in/screen/image/8.jpg">--%> -->
+      <img src="./image/2-1.png">
+      <div class="right">
+        <div class="unit">月销售金额(万元)</div>
+        <div class="num sellMonthAmount"></div>
+      </div>
+    </div>
+  </section>
+  <div class="bd">
+    <!-- 统计 -->
+    <div class="list">
+      <h2>合同统计</h2>
+      <div class="top">
+        <div class="panel order">
+          <div class="title">
+            <div class="tiao"></div>
+            <h3>合同单数统计
+              <div class="change">
+                <a class="bar1" href="javascript:;">柱形图</a>
+                <a class="line1" href="javascript:;">折线图</a>
+              </div>
+            </h3>
+          </div>
+          <div class="chart"></div>
+        </div>
+        <div class="panel count">
+          <div class="title">
+            <div class="tiao"></div>
+            <h3>合同数量统计
+              <div class="change">
+                <a class="bar2" href="javascript:;">柱形图</a>
+                <a class="line2" href="javascript:;">折线图</a>
+              </div>
+            </h3>
+          </div>
+          <div class="chart"></div>
+        </div>
+      </div>
+      <div class="bot">
+        <div class="panel amount">
+          <div class="title">
+            <div class="tiao"></div>
+            <h3>合同金额统计
+              <div class="change">
+                <a class="bar3" href="javascript:;">柱形图</a>
+                <a class="line3" href="javascript:;">折线图</a>
+              </div>
+            </h3>
+          </div>
+          <div class="chart"></div>
+        </div>
+        <div class="panel case">
+          <div class="title">
+            <div class="tiao"></div>
+            <h3>合同完结情况</h3>
+          </div>
+          <div class="chart"></div>
+        </div>
+      </div>
+    </div>
+    <!-- 同比  -->
+    <div class="list">
+      <h2>同比统计</h2>
+      <div class="top">
+        <div class="panel caigou">
+          <div class="title">
+            <div class="tiao"></div>
+            <h3>合同采购量同比</h3>
+          </div>
+          <div class="chart"></div>
+        </div>
+        <div class="panel sale">
+          <div class="title">
+            <div class="tiao"></div>
+            <h3>合同销售量同比</h3>
+          </div>
+          <div class="chart"></div>
+        </div>
+      </div>
+      <div class="bot">
+        <div class="panel cgAmount">
+          <div class="title">
+            <div class="tiao"></div>
+            <h3>合同采购金额同比</h3>
+          </div>
+          <div class="chart"></div>
+        </div>
+        <div class="panel saleAmount">
+          <div class="title">
+            <div class="tiao"></div>
+            <h3>合同销售金额同比</h3>
+          </div>
+          <div class="chart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/flexible.js"></script>
+  <script src="./js/echarts.min.js"></script>
+  <script src="./js/jquery.js"></script>
+  <script src="./js/infoSummary.js"></script>
+
+</body>
+
+</html>
