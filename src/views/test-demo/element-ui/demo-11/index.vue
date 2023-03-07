@@ -13,7 +13,6 @@
 
 <script>
 import tableData from './tableData'
-
 export default {
   name: 'TestElementUiDemo11View',
   data() {
@@ -26,21 +25,23 @@ export default {
     handleClickMagic() {
       // 数组对象根据每个对象的指定key值归类
       const result = this.tableData.reduce((a, b) => {
+        // console.log('a', a)
         if (a[b.productName]) {
+          // console.log('a[b.productName]', a[b.productName])
           a[b.productName].push(b)
         } else {
+          // console.log('[b]', [b])
           a[b.productName] = [b]
         }
         return a
       }, {})
-      // console.log(result)
-
+      // console.log('result', result)
       // 所有key值
       const productKeys = Object.keys(result)
-      // console.log(productKeys)
-
+      // console.log('productKeys', productKeys)
       // 所有key值的排序
       const productKeysSort = productKeys.sort(function (a, b) {
+        // console.log("a.localeCompare(b, 'zh-CN')", a.localeCompare(b, 'zh-CN'))
         return a.localeCompare(b, 'zh-CN')
       })
       // console.log(productKeysSort)
