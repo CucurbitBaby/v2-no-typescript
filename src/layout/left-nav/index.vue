@@ -73,6 +73,9 @@
         <el-menu-item index="/test-demo/vue2/demo-10"
           ><ic />表格层级嵌套合并</el-menu-item
         >
+         <el-menu-item index="/test-demo/vue2/demo-11"
+          ><ic />合并合计累计</el-menu-item
+        >
       </el-submenu>
 
       <el-submenu index="/test-demo/vue3jiajia">

@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.box{
+.box {
   width: 100%;
   height: 100%;
 }
