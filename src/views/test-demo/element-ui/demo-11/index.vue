@@ -1,25 +1,39 @@
 <template>
-  <div>
-    <el-table :data="tableData" border style="width: 100%">
-      <el-table-column prop="productName" label="产品名称"> </el-table-column>
-      <el-table-column prop="customerName" label="客户"> </el-table-column>
-      <el-table-column prop="baoXiao" label="报销"> </el-table-column>
-      <el-table-column prop="shenHe" label="审核"> </el-table-column>
-    </el-table>
-    <br />
-    <el-button type="primary" plain @click="handleClickMagic">Magic</el-button>
+  <div class="demo-container">
+    z-table: 自定义表格合并
+
+    <z-table :data="tableData" :columns="columns" :merge="merge" />
   </div>
 </template>
 
 <script>
-import tableData from './tableData'
+import zTable from './z-table'
+// import tableData from './z-table/tableData.js'
+import tableData from './tableData.js'
+
 export default {
-  name: 'TestElementUiDemo11View',
+  name: 'Base2A',
+  components: {
+    zTable
+  },
   data() {
     return {
-      // 原始数据是乱序的
-      tableData
+      isShow: false,
+      columns: [
+        { key: 'productName', title: '产品名', width: 250 },
+        { key: 'customerName', title: '客户', width: 250 },
+        // { key: 'baoXiao', title: '报销', width: 250 },
+        { key: 'shenHe', title: '审核', width: 250 }
+      ],
+      tableData: tableData,
+      columnsCooy: [],
+      tableDataCopy: [],
+      merge: {}
     }
+  },
+  created() {
+    this.handleClickMagic()
+    this.mergeTable()
   },
   methods: {
     handleClickMagic() {
@@ -47,7 +61,17 @@ export default {
       // console.log(productKeysSort)
 
       // 添加合计
+      let newArray = []
       productKeysSort.forEach((k) => {
+        newArray = result[k].reduce((total, cur, index) => {
+          const hasValue = total.findIndex((current) => {
+            return current.customerName === cur.customerName
+          })
+          hasValue === -1 && total.push(cur)
+          hasValue !== -1 && (total[hasValue].shenHe = total[hasValue].shenHe + cur.shenHe)
+          return total
+        }, [])
+        result[k] = newArray
         const count = result[k].reduce(function (countObj, current) {
           // 判断当前数组元素是否出现过
           if (countObj.productName) {
@@ -72,9 +96,58 @@ export default {
       // 重写表格数据
       const _tableData = productKeysSort.map((k) => result[k]).flat()
       // console.log(_tableData)
-
       this.tableData = _tableData
+      this.tableData.push({
+        productName: '汇总'
+      })
+    },
+    mergeTable() {
+      function initRowSpan(key, columnIndex) {
+        const values = this.tableDataCopy.map((row) => row[key])
+        let prev, startRowIndex
+
+        values.forEach((value, rowIndex) => {
+          if (rowIndex === 0) {
+            this.merge[columnIndex + '__postion__' + rowIndex] = {
+              value,
+              rowspan: 1,
+              colspan: 1
+            }
+            startRowIndex = rowIndex
+          } else {
+            if (prev === value && columnIndex < 1) {
+              // 这里是必然存在
+              this.merge[
+                columnIndex + '__postion__' + startRowIndex
+              ].rowspan += 1
+
+              this.merge[columnIndex + '__postion__' + rowIndex] = {
+                value,
+                rowspan: 0,
+                colspan: 1
+              }
+            } else {
+              startRowIndex = rowIndex
+
+              this.merge[columnIndex + '__postion__' + rowIndex] = {
+                value,
+                rowspan: 1,
+                colspan: 1
+              }
+            }
+          }
+          prev = value
+        })
+      }
+
+      // this.columnsCooy = JSON.parse(JSON.stringify(this.columns))
+      this.tableDataCopy = JSON.parse(JSON.stringify(this.tableData))
+      this.columns.forEach((col, index) => {
+        initRowSpan.call(this, col.key, index)
+      })
     }
   }
 }
 </script>
+
+<style></style>
