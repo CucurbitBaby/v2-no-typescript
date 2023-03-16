@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="block">
-      <span class="demonstration">单选选择任意一级选项111</span>
+      <span class="demonstration">单选选择任意一级选项</span>
       <br />
       <br />
       value {{ value }}
@@ -10,7 +10,7 @@
       <el-cascader
         v-model="value"
         :options="options"
-        :props="props"
+        :props="{ checkStrictly: true }"
         clearable
       ></el-cascader>
 

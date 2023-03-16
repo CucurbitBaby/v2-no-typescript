@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="block">
-      <span class="demonstration">单选选择任意一级选项111</span>
+      <span class="demonstration">单选选择任意一级选项</span>
       <br />
       <br />
       value {{ value }}
@@ -10,7 +10,7 @@
       <el-cascader
         v-model="value"
         :options="options"
-        :props="props"
+        :props="{ checkStrictly: true }"
         clearable
       ></el-cascader>
 
@@ -32,8 +32,19 @@
 </template>
 
 <script>
-let id = 0
+import { getCity } from '@/api'
+// const id = 0
 
+function treeFind(tree, func) {
+  for (const data of tree) {
+    if (func(data)) return data
+    if (data.children) {
+      const res = treeFind(data.children, func)
+      if (res) return res
+    }
+  }
+  return null
+}
 export default {
   name: 'TestElementUiDemo13View',
   data() {
@@ -86,10 +97,13 @@ export default {
         }
       ],
 
-      value2: [1, 2, 4],
+      cityList: [],
+      value2: [110000000000, 110100000000, 110101000000, 110101001000],
       props: {
+        checkStrictly: true,
         lazy: true,
         lazyLoad(node, resolve) {
+          /*
           const { level } = node
           setTimeout(() => {
             const nodes = Array.from({ length: level + 1 }).map((item) => ({
@@ -100,9 +114,48 @@ export default {
             // 通过调用resolve将子节点数据返回，通知组件数据加载完成
             resolve(nodes)
           }, 1000)
+          */
+          const { root } = node
+          if (root) {
+            getCity().then((res) => {
+              this.cityList = res
+              const arr = this.cityList
+                .filter((e) => e.parentCode === 0)
+                .map((item) => {
+                  return {
+                    value: item.areaCode,
+                    label: item.name,
+                    leaf: !item.children
+                  }
+                })
+              resolve(arr)
+            })
+          } else {
+            const findResult = treeFind(
+              this.cityList,
+              (data) => data.areaCode === node.value
+            )
+            const options = findResult?.children?.length
+              ? findResult.children
+              : []
+            resolve(
+              options.map((item) => {
+                return {
+                  value: item.areaCode,
+                  label: item.name,
+                  leaf: !item.children
+                }
+              })
+            )
+          }
         }
       }
     }
+  },
+  created() {
+    getCity().then((res) => {
+      this.cityList = res
+    })
   },
   methods: {}
 }
