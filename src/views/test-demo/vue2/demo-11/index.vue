@@ -312,6 +312,7 @@ export default {
   }
   .list {
     margin-top: 10px;
+    padding: 10px 0;
     border-radius: 4px;
   }
   .table {
