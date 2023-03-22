@@ -1,63 +1,40 @@
 <template>
   <div>
-    <dl>
-      <dt>演示 el-cascader 卡死</dt>
-      <dd>
-        <el-button type="primary" size="small" @click="handleClickAdd">
-          新增
-        </el-button>
-      </dd>
-    </dl>
-    <div>
-      <div class="box-shadow--blue" v-for="city in cityCtrol" :key="city.id">
-        <el-cascader
-          v-model="city.cityValue"
-          :options="city.cityList"
-          :props="{
-            value: 'areaCode',
-            label: 'name',
-            checkStrictly: true
-          }"
-          clearable
-        />
-        {{ city.cityValue }}
-      </div>
-    </div>
+    <el-tabs v-model="activeName" @tab-click="handleClick">
+      <el-tab-pane label="演示el-cascader卡死" name="CascaderMemoryOverflow">
+        <CascaderMemoryOverflow />
+      </el-tab-pane>
+      <el-tab-pane label="el-cascader 懒加载" name="CascaderLazy">
+        <CascaderLazy />
+      </el-tab-pane>
+      <el-tab-pane label="el-cascader 回显" name="CascaderEcho">
+        <CascaderEcho />
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 
 <script>
-import { v4 as uuidv4 } from 'uuid'
-import { getCity } from '@/api'
+import CascaderMemoryOverflow from './components/cascader-memory-overflow'
+import CascaderLazy from './components/cascader-lazy'
+import CascaderEcho from './components/cascader-echo'
 
 export default {
   name: 'TestElementUiDemo01View',
+  components: {
+    CascaderMemoryOverflow,
+    CascaderLazy,
+    CascaderEcho
+  },
   data() {
     return {
-      cityCtrol: [],
-      cityJson: []
+      activeName: 'CascaderMemoryOverflow'
     }
   },
-  created() {
-    getCity().then((res) => {
-      this.cityJson = res
-      this.cityCtrol.push({ cityList: this.cityJson, cityValue: [], id: uuidv4() })
-    })
-  },
   methods: {
-    uuidv4,
-    handleClickAdd() {
-      this.cityCtrol.push({ cityList: this.cityJson, cityValue: [], id: uuidv4() })
+    handleClick(tab, event) {
+      console.log(tab, event)
     }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.box-shadow--blue {
-  margin: 6px;
-  padding: 6px;
-  border: 1px dashed #409eff;
-  border-radius: 6px;
-}
-</style>
