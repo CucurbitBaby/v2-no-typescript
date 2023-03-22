@@ -45,7 +45,6 @@ export default {
       // 所有key值
       const productKeys = Object.keys(result)
       // console.log(productKeys)
-
       // 所有key值的排序
       const productKeysSort = productKeys.sort(function (a, b) {
         return a.localeCompare(b, 'zh-CN')
