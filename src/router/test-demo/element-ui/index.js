@@ -68,6 +68,11 @@ export default {
       path: 'element-ui/demo-13',
       name: 'test-demo-element-ui-demo-13',
       component: () => import('@/views/test-demo/element-ui/demo-13/index.vue')
+    },
+    {
+      path: 'element-ui/demo-14',
+      name: 'test-demo-element-ui-demo-14',
+      component: () => import('@/views/test-demo/element-ui/demo-14/index.vue')
     }
   ]
 }

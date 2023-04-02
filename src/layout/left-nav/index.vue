@@ -63,14 +63,15 @@
         <el-menu-item index="/test-demo/element-ui/demo-03"><ic />todo</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-04"><ic />试用倒计时</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-05"><ic />表格分页回显</el-menu-item>
-        <el-menu-item index="/test-demo/element-ui/demo-06"><ic />todo</el-menu-item>
-        <el-menu-item index="/test-demo/element-ui/demo-07"><ic />todo</el-menu-item>
+        <el-menu-item index="/test-demo/element-ui/demo-06"><ic />表格穿梭</el-menu-item>
+        <el-menu-item index="/test-demo/element-ui/demo-07"><ic />todo select事件后端表格回显</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-08"><ic />todo</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-09"><ic />todo</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-10"><ic />todo</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-11"><ic />表格多个合计</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-12"><ic />demo-12</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-13"><ic />demo-13</el-menu-item>
+        <el-menu-item index="/test-demo/element-ui/demo-14"><ic />展示流程图</el-menu-item>
       </el-submenu>
 
     </el-submenu>
