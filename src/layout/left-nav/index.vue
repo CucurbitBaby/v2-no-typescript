@@ -65,7 +65,7 @@
         <el-menu-item index="/test-demo/element-ui/demo-05"><ic />表格分页回显</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-06"><ic />表格穿梭</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-07"><ic />todo select事件后端表格回显</el-menu-item>
-        <el-menu-item index="/test-demo/element-ui/demo-08"><ic />todo</el-menu-item>
+        <el-menu-item index="/test-demo/element-ui/demo-08"><ic />时间范围校验</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-09"><ic />todo</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-10"><ic />todo</el-menu-item>
         <el-menu-item index="/test-demo/element-ui/demo-11"><ic />表格多个合计</el-menu-item>
@@ -83,6 +83,11 @@
         <i class="el-icon-tickets"></i>
         <span>Vue2</span>
       </template>
+
+      <el-submenu index="/vue2-demo/api">
+        <template slot="title"><ic />API</template>
+        <el-menu-item index="/vue2-demo/api/demo-01"><ic />extends</el-menu-item>
+      </el-submenu>
 
       <el-submenu index="/vue2-demo/composition-api">
         <template slot="title"><ic />CompositionAPI</template>

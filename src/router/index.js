@@ -7,7 +7,7 @@ import Layout from '@/layout'
 // import vueDemoRouter from './vue2-demo'
 
 import { testAxiosRouter, testVue2Router, testElementUiRouter } from './test-demo'
-import { compositionApiRouter } from './vue2-demo'
+import { vue2ApiRouter, compositionApiRouter } from './vue2-demo'
 import { treeRouter } from './data-structures-and-algorithms'
 
 Vue.use(VueRouter)
@@ -28,6 +28,7 @@ const routes = [
   testVue2Router,
   testElementUiRouter,
 
+  vue2ApiRouter,
   compositionApiRouter,
 
   treeRouter
