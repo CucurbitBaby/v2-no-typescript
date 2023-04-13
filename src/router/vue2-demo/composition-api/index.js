@@ -8,6 +8,11 @@ export default {
       path: 'composition-api/demo-01',
       name: 'composition-api-demo-01',
       component: () => import('@/views/vue2-demo/composition-api/demo-01')
+    },
+    {
+      path: 'composition-api/demo-02',
+      name: 'composition-api-demo-02',
+      component: () => import('@/views/vue2-demo/composition-api/demo-02')
     }
   ]
 }

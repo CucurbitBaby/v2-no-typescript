@@ -91,7 +91,8 @@
 
       <el-submenu index="/vue2-demo/composition-api">
         <template slot="title"><ic />CompositionAPI</template>
-        <el-menu-item index="/vue2-demo/composition-api/demo-01"><ic />选项1</el-menu-item>
+        <el-menu-item index="/vue2-demo/composition-api/demo-01"><ic />基础 api</el-menu-item>
+        <el-menu-item index="/vue2-demo/composition-api/demo-02"><ic />选项2</el-menu-item>
       </el-submenu>
 
       <!--
@@ -166,6 +167,7 @@ export default {
 
 <style lang="scss" scoped>
 .el-menu-demo {
+
   overflow-x: hidden;
   overflow-y: auto;
   &::-webkit-scrollbar-track-piece {

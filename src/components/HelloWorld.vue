@@ -1,11 +1,22 @@
 <template>
   <div class="hello">
     <h1>一个很乱的首页</h1>
-    <h3>表格回显</h3>
+    <h3>表格相关</h3>
     <ul>
-      <li><a href="/test-demo/element-ui/demo-05" target="_blank" rel="noopener">普通分页回显</a></li>
+      <li>
+        <a href="/test-demo/element-ui/demo-05" target="_blank" rel="noopener"
+          >普通分页回显</a
+        >
+      </li>
     </ul>
-
+    <h3>composition api 相关</h3>
+    <ul>
+      <li>
+        <a href="/vue2-demo/composition-api/demo-01" target="_blank" rel="noopener"
+          >基础 API</a
+        >
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -23,8 +34,7 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style lang="scss" scoped>
 h3 {
   margin: 40px 0 0;
 }
@@ -39,5 +49,7 @@ li {
 a {
   color: #42b983;
 }
-
+.hello {
+  padding: 20px;
+}
 </style>
